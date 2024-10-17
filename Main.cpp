@@ -5,10 +5,12 @@ const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
 class DoublyLinkedList {
 private:
+    // defining the structure of a node in the list
     struct Node {
         int data;
-        Node* prev;
-        Node* next;
+        Node* prev; // pointer to the previous node
+        Node* next;// pointer to the next node
+
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
             data = val;
             prev = p;
@@ -16,6 +18,7 @@ private:
         }
     };
 
+    // constructor to create a new node with a value and optional previous and next pointers
     Node* head;
     Node* tail;
 
@@ -204,8 +207,24 @@ public:
 };
 
 int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
+   
 
+    // creating a new doubly linked list
+    DoublyLinkedList dll;
 
+    // adding some elements to the list
+    dll.push_back(10); // list: 10
+    dll.push_back(20); // list: 10, 20
+    dll.push_back(30); // list: 10, 20, 30
+    dll.push_back(40); // list: 10, 20, 30, 40
+    dll.push_back(50); // list: 10, 20, 30, 40, 50
+
+    // printing the full list
+    cout << "Full list: ";
+    dll.print(); // should display: 10 20 30 40 50
+
+    // demonstrating the every_other_element method
+    cout << "Every other element: ";
+    dll.every_other_element(); // should display: 10 30 50
     return 0;
 }
