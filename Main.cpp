@@ -47,15 +47,16 @@ public:
             return;
         }
 
-        newNode->next = temp->next;
-        newNode->prev = temp;
-        if (temp->next)
+        newNode->next = temp->next; // set the new node's next to current node's next
+        newNode->prev = temp;  // set the new node's prev to current node
+        if (temp->next)              // if there's a node after current
             temp->next->prev = newNode;
         else
-            tail = newNode;
-        temp->next = newNode;
+            tail = newNode;  // if current was the tail, update the tail to the new node
+        temp->next = newNode; // link current node to the new node
     }
 
+    // this method to delete a node by its value
     void delete_val(int value) {
         if (!head) return;
 
@@ -78,6 +79,7 @@ public:
 
         delete temp;
     }
+    // this method to delete a node by its position (1-based index)
 
     void delete_pos(int pos) {
         if (!head) {
@@ -90,7 +92,7 @@ public:
             return;
         }
 
-        Node* temp = head;
+        Node* temp = head; // starting  from the head
 
         for (int i = 1; i < pos; i++) {
             if (!temp) {
@@ -115,6 +117,7 @@ public:
         temp->next->prev = tempPrev;
         delete temp;
     }
+    // method to add a node at the end of the list
 
     void push_back(int v) {
         Node* newNode = new Node(v);
@@ -127,6 +130,7 @@ public:
         }
     }
 
+    // method to add a node at the front of the list
     void push_front(int v) {
         Node* newNode = new Node(v);
         if (!head)
@@ -138,6 +142,7 @@ public:
         }
     }
 
+    // method to remove the first node from the list
     void pop_front() {
 
         if (!head) {
